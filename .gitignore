@@ -1,0 +1,23 @@
+# Node modules and cache paths
+node_modules/
+.node_cache/
+
+# environment variables
+.env
+
+# IDE / Editor files
+.vscode/
+.idea/
+.*.swp
+
+# Logs and temp files
+/logs
+/tmp
+
+# User specific files
+.DS_Store
+Thumbs.db
+
+# npm and yarn
+.npmrc
+.yarnrc
