@@ -21,6 +21,7 @@ const createNewCategory = (data) => {
 
     // create new object with the data entering
     const budgetToAdd = {
+        name: data.name,
         amount: data.amount, // amount of money target to this category
         spentAmount: data.spent || 0, // how much is spend at the time, by default is 0
         description: data.description || '', // how, where, and some guidelins is expected to spent the money
@@ -39,7 +40,7 @@ const createNewCategory = (data) => {
         // update the id counter by one
         idCounter++;
 
-        return true;
+        return categoryCreated;
     } else {
 
         return false;
@@ -121,17 +122,18 @@ const spentAmount = (data) => {
     // description (optional): when want to add any extra description
     // alertThreshold (optional): if want to make it higher or lower : it may send alert within the change
 // return the changed object
-const updateField = (data) => {
-
+const updateField = (name, data) => {
     // get the category keys
-    let category = getAnyCategoryByName(data.name);
-
+    const category = getAnyCategoryByName(name);
     // iterate over the data keys
     // update the field by the passed value
     for(let field of Object.keys(category)) {
-        category[field] = data[field];
+        // check if the category exists in the data argument
+        if(data[field]) {
+            // then update that category
+            category[field] = data[field];
+        }
     }
-
     // retrieve again the object to return
     if(category) {
 
